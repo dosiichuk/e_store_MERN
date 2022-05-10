@@ -1,3 +1,4 @@
+import React from 'react';
 import { ListGroup, ButtonGroup, Button } from 'react-bootstrap';
 
 import styles from './CartItem.module.scss';

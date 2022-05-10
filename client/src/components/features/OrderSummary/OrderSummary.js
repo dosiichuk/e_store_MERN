@@ -1,3 +1,4 @@
+import React from 'react';
 import { Table } from 'react-bootstrap';
 import clsx from 'clsx';
 import styles from './OrderSummary.module.scss';

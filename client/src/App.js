@@ -4,32 +4,25 @@ import { Provider } from 'react-redux';
 
 import { store } from './redux/store';
 
-import { MainLayout } from './components/layout/MainLayout/MainLayout';
-import { Homepage } from './components/views/Homepage/Homepage';
-import { SinglePost } from './components/features/SinglePost/SinglePost';
-import { PostEdit } from './components/views/PostEdit/PostEdit';
-import { PostAdd } from './components/views/PostAdd/PostAdd';
-import { NotFound } from './components/views/NotFound/NotFound';
-import { MyPosts } from './components/views/MyPosts/MyPosts';
+import Layout from './components/views/Layout/Layout';
+import { Home } from './components/pages/Home/Home';
+
+import './styles/global.scss';
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <MainLayout>
-            <Switch>
-              <Route exact path='/' component={Homepage} />
-              <Route exact path='/post/add' component={PostAdd} />
-              <Route exact path='/post/myposts' component={MyPosts} />
-              <Route exact path='/post/:id' component={SinglePost} />
-              <Route exact path='/post/:id/edit' component={PostEdit} />
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/post/add' component={Home} />
+          <Route exact path='/post/myposts' component={Home} />
+          <Route exact path='/post/:id' component={Home} />
+          <Route exact path='/post/:id/edit' component={Home} />
 
-              <Route path='*' component={NotFound} />
-            </Switch>
-          </MainLayout>
-        </ThemeProvider>
-      </StylesProvider>
+          <Route path='*' component={Home} />
+        </Switch>
+      </Layout>
     </BrowserRouter>
   </Provider>
 );

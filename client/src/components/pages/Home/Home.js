@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Hero } from '../../views/Hero/Hero';
+import Hero from '../../views/Hero/Hero';
 import AllProducts from '../../views/AllProducts/AllProducts';
+import Filter from '../../features/Filter/Filter';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';

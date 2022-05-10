@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect, useState } from 'react';
 
-import axios from "axios";
-import ProductBox from "../../common/ProductBox/ProductBox";
+import axios from 'axios';
+import ProductBox from '../../common/ProductBox/ProductBox';
 
 const AllProducts = () => {
   // const [products, setProducts] = useState([]);
@@ -14,8 +15,8 @@ const AllProducts = () => {
   //     .then((data) => setProducts(data));
   // }, [products]);
   return (
-    <div className="col-sm-12 col-md-9 col-lg-8 align-items-start mb-4">
-      <div className="row gy-3 gx-3 d-flex align-items-center justify-content-center">
+    <div className='col-sm-12 col-md-9 col-lg-8 align-items-start mb-4'>
+      <div className='row gy-3 gx-3 d-flex align-items-center justify-content-center'>
         <ProductBox />
         <ProductBox />
         <ProductBox />
