@@ -1,0 +1,59 @@
+.carousel,
+.carouselItem {
+  height: 90vh;
+  position: relative;
+
+  @media (max-width: 1000px) {
+    height: 40vh;
+  }
+  @media (max-width: 510px) {
+    height: 30vh;
+  }
+  @media (max-width: 380px) {
+    height: 30vh;
+  }
+}
+
+.subtitle {
+  font-size: 2rem;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
+}
+
+.carouselImage {
+  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carouselCaption {
+  position: absolute;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-light-cyan);
+
+  @media (max-width: 1000px) {
+    width: 80%;
+    top: 40%;
+  }
+}
+
+.carouselCaption h3 {
+  font-size: 4rem;
+  font-weight: 900;
+  -webkit-text-stroke: 2px var(--color-dark-cyan);
+
+  @media (max-width: 750px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 2rem;
+  }
+}

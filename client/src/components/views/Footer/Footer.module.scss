@@ -1,0 +1,9 @@
+.footer {
+  background-color: #dfeeea;
+  border-top: 3px solid #2f5d62;
+
+  & .col-md-4 {
+    color: #2f5d62;
+    font-weight: 500;
+  }
+}
