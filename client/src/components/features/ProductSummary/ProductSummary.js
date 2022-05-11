@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { Card } from 'react-bootstrap';
 // import { connect, ConnectedProps } from 'react-redux';
@@ -27,7 +27,7 @@ const Component = ({ className, children }) => {
           libero ipsum fuga rerum id sit unde quis incidunt voluptates. Molestiae
           quaerat voluptatibus cupiditate delectus!
         </p>
-        <Link href='/cart/checkout'>
+        <Link to='/cart/checkout'>
           <span className='btn'>Proceed to checkout</span>
         </Link>
       </Card>

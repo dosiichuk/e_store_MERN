@@ -1,4 +1,6 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import Hero from '../../views/Hero/Hero';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';
@@ -16,7 +18,6 @@ import styles from './Login.module.scss';
 const Component = ({ propName }) => {
   return (
     <div>
-      <Hero />
       <Container>
         <h2 className='sectionTitle'>Login</h2>
       </Container>

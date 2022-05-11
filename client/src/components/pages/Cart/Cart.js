@@ -1,4 +1,6 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import Cart from '../../features/Cart/Cart';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';
@@ -15,12 +17,9 @@ import styles from './Cart.module.scss';
 
 const Component = ({ propName }) => {
   return (
-    <div>
-      <Container>
-        <h2 className='sectionTitle'>Your cart</h2>
-        <Cart />
-      </Container>
-    </div>
+    <Container className='mt-4'>
+      <Cart />
+    </Container>
   );
 };
 

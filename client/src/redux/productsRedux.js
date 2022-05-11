@@ -2,18 +2,16 @@ import axios from 'axios';
 import config from '../config';
 
 /* selectors */
-export const getAll = ({ posts, user }, onlyMyPosts = false) => {
-  if (onlyMyPosts) {
-    return posts.data.filter(post => post.author.name === user.name);
-  }
-  return posts.data;
+export const getAll = ({ products }) => {
+  return products.data;
 };
-export const getPostById = ({ posts }, id) => posts.data.find(post => post._id == id);
+export const getProductById = ({ products }, id) =>
+  products.data.find(product => product._id == id);
 
-export const getIsLoading = ({ posts }) => posts.loading.active;
+export const getIsLoading = ({ products }) => products.loading.active;
 
 /* action name creator */
-const reducerName = 'posts';
+const reducerName = 'products';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
@@ -33,15 +31,13 @@ export const deleteSuccess = payload => ({ payload, type: DELETE_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
-export const fetchPostsRequest = filters => async (dispatch, getState) => {
+export const fetchProductsRequest = () => async (dispatch, getState) => {
   try {
-    const postsDataIsEmpty = getAll(getState()).length === 0;
+    const productDataIsEmpty = getAll(getState()).length === 0;
     const isLoading = getIsLoading(getState());
-    if (postsDataIsEmpty && !isLoading) {
+    if (productDataIsEmpty && !isLoading) {
       dispatch(fetchStarted());
-      const { data } = await axios.get(`${config.api.baseUrl}/posts`, {
-        params: { hello: 'words' },
-      });
+      const { data } = await axios.get(`${config.api.baseUrl}/products`);
       if (data.length > 0) {
         dispatch(fetchSuccess(data));
       }

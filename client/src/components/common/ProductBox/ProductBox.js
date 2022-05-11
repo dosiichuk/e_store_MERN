@@ -1,26 +1,29 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductBox.module.scss';
 
-const ProductBox = () => {
+const Component = ({ _id, image, title, price, description, rating, reviews }) => {
   return (
-    <Card className='col-sm-9 col-md-6 col-lg-4 px-2 py-2'>
-      <Card.Img
-        variant='top'
-        src='https://images.unsplash.com/photo-1611937663641-5cef5189d71b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-      />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <p className={styles.cardText}>
-          Some quick example text to build on the card title and make up the bulk of the
-          cards content.
-        </p>
-        <Button variant='primary'>Go somewhere</Button>
+    <Card className='col-sm-9 col-md-5 col-lg-5 px-2 py-2 mx-2 clickable align-self-stretch cursor-pointer'>
+      <Card.Img variant='top' className={styles.cardImage} src={image} />
+      <Card.Body className='mt-auto'>
+        <Card.Title className='d-inline'>{title}</Card.Title>
+        <p className={styles.cardText}>{description}</p>
+        <Link to={`/products/${_id}`} className={styles.infoButton + ' btn'}>
+          Details
+        </Link>
+        <div className='d-flex align-items-center justify-content-between'>
+          <Button variant='primary' className='d-block'>
+            Add to cart!
+          </Button>
+          <span className={styles.priceTag}>${price}</span>
+        </div>
       </Card.Body>
     </Card>
   );
 };
 
-export default ProductBox;
+export { Component as ProductBox };

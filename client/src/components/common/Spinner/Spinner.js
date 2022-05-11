@@ -1,8 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Hero from '../../views/Hero/Hero';
-import { AllProducts } from '../../views/AllProducts/AllProducts';
-import Filter from '../../features/Filter/Filter';
+import { Spinner } from 'react-bootstrap';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';
@@ -15,24 +12,10 @@ import Filter from '../../features/Filter/Filter';
 
 // interface Props extends PropsFromRedux {}
 
-import styles from './Home.module.scss';
+import styles from './Spinner.module.scss';
 
 const Component = ({ propName }) => {
-  return (
-    <div>
-      <Hero />
-      <Container>
-        <h2 className='sectionTitle'>Check out our products</h2>
-        <div className='row'>
-          <div className='col-sm-0 col-md-3 col-lg-4'>
-            <Filter />
-          </div>
-
-          <AllProducts />
-        </div>
-      </Container>
-    </div>
-  );
+  return <Spinner animation='border' variant='success' />;
 };
 
 // const mapStateToProps = (state: RootState) => ({
@@ -49,7 +32,7 @@ const Component = ({ propName }) => {
 // const Container = connector(Component);
 
 export {
-  Component as Home,
-  // Container as Home,
-  Component as HomeComponent,
+  Component as Spinner,
+  // Container as Spinner,
+  Component as SpinnerComponent,
 };

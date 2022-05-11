@@ -1,14 +1,14 @@
-const Post = require('../models/post.model');
+const Product = require('../models/product.model');
 const User = require('../models/user.model');
 const { validateBody } = require('../validators/validator');
 
 exports.getAll = async (req, res, next) => {
   try {
-    const posts = await Post.find({ status: { $eq: 'published' } })
-      .populate('author', ['name', 'email', 'googleId'])
-      .select('title content summary price photo publishedDate author location')
-      .sort({ publishedDate: -1 });
-    res.json(posts);
+    console.log('running get');
+    const products = await Product.find();
+    const user = await User.find();
+    console.log(products, user);
+    res.json(products);
   } catch (err) {
     res.status(500).json({ message: err });
   }

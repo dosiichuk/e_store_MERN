@@ -33,14 +33,19 @@
   padding-top: 0;
   padding-bottom: 0;
   font-size: 5rem;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+
+  bottom: 20% !important;
+
   color: var(--color-light-cyan);
 
   @media (max-width: 1000px) {
     width: 80%;
-    top: 40%;
+  }
+
+  & p {
+    @media (max-width: 1000px) {
+      display: none;
+    }
   }
 }
 

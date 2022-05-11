@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import CartItem from '../../common/CartItem/CartItem';
 import Filter from '../Filter/Filter';
@@ -16,7 +16,7 @@ const Cart = () => {
       </div>
       <div className='col-sm-12 col-md-8 col-lg-8'>
         <Card body>
-          <h2>Prouct name</h2>
+          <h2>Your cart</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
             libero ipsum fuga rerum id sit unde quis incidunt voluptates. Molestiae
@@ -30,7 +30,7 @@ const Cart = () => {
             <CartItem />
           </ListGroup>
           <OrderSummary />
-          <Link href='/cart/checkout'>
+          <Link to='/cart/checkout'>
             <span className='btn'>Proceed to checkout</span>
           </Link>
         </Card>

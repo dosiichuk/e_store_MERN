@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import Link from 'next/link';
+import React from 'react';
+
 import clsx from 'clsx';
 import { Card, ListGroup } from 'react-bootstrap';
 // import { connect, ConnectedProps } from 'react-redux';

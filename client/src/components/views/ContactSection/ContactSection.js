@@ -11,7 +11,7 @@ const ContactSection = () => {
           <div className='newsletter-col col-md-4'>
             <div className='box px-5 mb-3'>
               <h3>Newsletter</h3>
-              <p>Lorem Ipsum jest tekstem stosowanym.</p>
+              <p>Sign up to receive our newsletter with the best offers.</p>
               <form>
                 <div className='form-group'>
                   <input
@@ -33,8 +33,8 @@ const ContactSection = () => {
           </div>
           <div className='name-col col-md-4'>
             <div className='box px-5 mb-3'>
-              <h3>ShopPerFy</h3>
-              <p>Lorem Ipsum jest tekstem stosowanym.</p>
+              <h3>Computer store</h3>
+              <p>Visit our social media pages.</p>
               <div className='icon-box'>
                 <a href='#'>
                   <FaTwitter className='mx-2' />
@@ -54,8 +54,8 @@ const ContactSection = () => {
           <div className='contact-col col-md-4'>
             <div className='box px-5 mb-3'>
               <h3>Contact Us</h3>
-              <p className='m-0'>2798 Cunhingham Court</p>
-              <p className='m-0'>Rocherter Hills 783874546 Michigan</p>
+              <p className='m-0'>2798 Brisbane Road</p>
+              <p className='m-0'>Dull City 78dfg6 Slivonia</p>
               <a href='#'>support@company.com</a>
             </div>
           </div>

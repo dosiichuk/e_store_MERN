@@ -1,4 +1,7 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import Filter from '../../features/Filter/Filter';
+import { CheckoutForm } from '../../features/CheckoutForm/CheckoutForm';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';

@@ -1,25 +1,18 @@
 const express = require('express');
 
 const router = express.Router();
-const PostController = require('../controllers/posts.controller');
+const ProductController = require('../controllers/products.controller');
 const fileUpload = require('../middleware/fileUpload');
 const { authorize } = require('../middleware/auth');
 
-router.route('/posts').get(PostController.getAll);
+router.route('/products').get(ProductController.getAll);
 
-router.route('/posts/:id').get(PostController.getOneById);
+router.route('/products/:id').get(ProductController.getOneById);
 
-router
-  .route('/posts')
-  .post(authorize, fileUpload.single('photo'), PostController.createOne);
+router.route('/products').post(ProductController.createOne);
 
-router
-  .route('/posts/:id')
-  .put(authorize, fileUpload.single('photo'), PostController.updateOne);
+router.route('/products/:id').put(ProductController.updateOne);
 
-router.route('/posts/:id').delete(authorize, PostController.deletOne);
-
-//additional routes for testing
-router.route('/posts/user/:user').get(PostController.getByUser);
+router.route('/products/:id').delete(authorize, ProductController.deletOne);
 
 module.exports = router;

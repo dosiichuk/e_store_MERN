@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import clsx from 'clsx';
 

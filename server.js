@@ -23,7 +23,7 @@ app.use(session({ secret: process.env.sessionSecret }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const postsRoutes = require('./routes/posts.routes');
+const productRoutes = require('./routes/products.routes');
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
 
@@ -42,7 +42,7 @@ app.use(helmet());
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.use('/auth', authRoutes);
-app.use('/api', postsRoutes);
+app.use('/api', productRoutes);
 app.use('/api', userRoutes);
 
 app.get('/api', (req, res) => {

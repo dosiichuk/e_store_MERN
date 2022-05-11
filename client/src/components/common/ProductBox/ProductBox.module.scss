@@ -1,3 +1,16 @@
 .cardText {
   font-size: 0.7rem;
 }
+
+.priceTag {
+  font-weight: 800;
+  display: block;
+  font-size: 1.5rem;
+}
+
+.infoButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

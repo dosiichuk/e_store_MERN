@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   role: { type: String, required: true, default: 'user' },
@@ -13,4 +13,4 @@ const UserSchema = new mongoose.Schema({
 });
 
 // OUR TODO MODEL
-export const User = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
