@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import CartItem from '../../common/CartItem/CartItem';
 import Filter from '../Filter/Filter';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
 import styles from './Cart.module.scss';
 
+import { getCartProducts } from '../../../redux/cartRedux';
+
 const Cart = () => {
+  const cartItems = useSelector(getCartProducts);
+  if (cartItems.length === 0) return <div>Your cart is empty. Maybe buy smth!</div>;
   return (
     <div className='row'>
       <div className='col-sm-12 col-md-4 col-lg-4'>
@@ -23,11 +28,9 @@ const Cart = () => {
             quaerat voluptatibus cupiditate delectus!
           </p>
           <ListGroup as='ul'>
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cartItems.map((item, index) => (
+              <CartItem key={index} item={item} />
+            ))}
           </ListGroup>
           <OrderSummary />
           <Link to='/cart/checkout'>

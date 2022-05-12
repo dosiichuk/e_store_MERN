@@ -16,24 +16,21 @@ import styles from './ReviewForm.module.scss';
 
 const Component = ({ className, children }) => {
   return (
-    <div className={clsx(className, styles.root)}>
+    <div className={clsx(className, styles.root, 'pt-4')}>
       <h2>ReviewForm</h2>
       <Form>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type='email' placeholder='Enter email' />
+          <Form.Label>Review:</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter review text'
+            autoComplete='false'
+          />
           <Form.Text className='text-muted'>
-            Well never share your email with anyone else.
+            Thank you for helping others to make choice!
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder='Password' />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Check me out' />
-        </Form.Group>
         <Button variant='primary' type='submit'>
           Submit
         </Button>

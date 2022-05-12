@@ -3,7 +3,7 @@ import { ListGroup, ButtonGroup, Button } from 'react-bootstrap';
 
 import styles from './CartItem.module.scss';
 
-const CartItem = () => {
+const item = ({ item }) => {
   return (
     <ListGroup.Item
       as='li'
@@ -14,16 +14,21 @@ const CartItem = () => {
         src='https://images.unsplash.com/photo-1509087859087-a384654eca4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
       />
       <div className='ms-2 me-auto'>
-        <div className='fw-bold'>Subheading</div>
-        Cras justo odio
+        <div className='fw-bold'>{item.title}</div>
+        {item.description}
+        <div className='fw-bold'>Unit price: ${item.price}</div>
       </div>
+
       <ButtonGroup>
         <Button>-</Button>
-        <input style={{ width: '3rem' }} />
+        <input
+          style={{ width: '3rem', textAlign: 'center', fontWeight: '800' }}
+          value={item.quantity}
+        />
         <Button>+</Button>
       </ButtonGroup>
     </ListGroup.Item>
   );
 };
 
-export default CartItem;
+export default item;

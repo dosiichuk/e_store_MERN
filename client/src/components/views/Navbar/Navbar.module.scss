@@ -15,3 +15,20 @@
     margin-right: auto;
   }
 }
+
+.cartCount {
+  position: absolute;
+  top: -15%;
+  right: -15%;
+  background-color: var(--color-light-cyan);
+  color: var(--color-dark-cyan);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 100%;
+  border: 3px solid var(--color-dark-cyan);
+
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

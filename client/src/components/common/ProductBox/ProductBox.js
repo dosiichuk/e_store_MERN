@@ -2,10 +2,20 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addToCart } from '../../../redux/cartRedux';
 
 import styles from './ProductBox.module.scss';
 
-const Component = ({ _id, image, title, price, description, rating, reviews }) => {
+const Component = ({
+  _id,
+  image,
+  title,
+  price,
+  description,
+  rating,
+  addProductToCart,
+}) => {
   return (
     <Card className='col-sm-9 col-md-5 col-lg-5 px-2 py-2 mx-2 clickable align-self-stretch cursor-pointer'>
       <Card.Img variant='top' className={styles.cardImage} src={image} />
@@ -16,7 +26,20 @@ const Component = ({ _id, image, title, price, description, rating, reviews }) =
           Details
         </Link>
         <div className='d-flex align-items-center justify-content-between'>
-          <Button variant='primary' className='d-block'>
+          <Button
+            variant='primary'
+            className='d-block'
+            onClick={() =>
+              addProductToCart({
+                _id,
+                image,
+                title,
+                price,
+                description,
+                rating,
+              })
+            }
+          >
             Add to cart!
           </Button>
           <span className={styles.priceTag}>${price}</span>
@@ -26,4 +49,10 @@ const Component = ({ _id, image, title, price, description, rating, reviews }) =
   );
 };
 
-export { Component as ProductBox };
+const mapDispatchToProps = dispatch => ({
+  addProductToCart: product => dispatch(addToCart(product)),
+});
+
+const Container = connect(null, mapDispatchToProps)(Component);
+
+export { Container as ProductBox };

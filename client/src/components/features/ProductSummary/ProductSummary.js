@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { Card } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';
 // import { ThunkDispatch } from 'redux-thunk';
@@ -15,23 +17,25 @@ import { Card } from 'react-bootstrap';
 
 import styles from './ProductSummary.module.scss';
 import { ReviewBoard } from '../ReviewBoard/ReviewBoard';
+import { getProductById } from '../../../redux/productsRedux';
 
 const Component = ({ className, children }) => {
+  const { id } = useParams();
+  const product = useSelector(state => getProductById(state, id));
   return (
     <div className={clsx(className, styles.root)}>
-      <h2>ProductSummary</h2>
       <Card body>
-        <h2>Prouct name</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
-          libero ipsum fuga rerum id sit unde quis incidunt voluptates. Molestiae
-          quaerat voluptatibus cupiditate delectus!
-        </p>
-        <Link to='/cart/checkout'>
-          <span className='btn'>Proceed to checkout</span>
-        </Link>
+        <h2>{product.title}</h2>
+        <p>{product.description}</p>
+        <p>Price: ${product.price}</p>
+        <img
+          src={product.image}
+          alt={product.title}
+          style={{ width: '100%', maxHeight: '50%' }}
+        />
+        <span className='btn d-block'>Add to cart</span>
       </Card>
-      <ReviewBoard />
+      <ReviewBoard reviews={product.reviews} />
     </div>
   );
 };

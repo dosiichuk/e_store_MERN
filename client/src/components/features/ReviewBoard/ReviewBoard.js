@@ -17,19 +17,22 @@ import styles from './ReviewBoard.module.scss';
 import { Review } from '../../common/Review/Review';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-const Component = ({ className, children }) => {
+const Component = ({ className, children, reviews }) => {
+  if (!reviews || reviews.length === 0)
+    return (
+      <div>
+        <div>No reviews for this product. Maybe add one!</div>
+        <ReviewForm />
+      </div>
+    );
   return (
     <div className={clsx(className, styles.root)}>
-      <h2>ReviewBoard</h2>
+      <h2 className='pt-5'>Product reviews</h2>
       <Card body>
-        <h2>Prouct name</h2>
-
         <ListGroup as='ul'>
-          <Review />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
+          {reviews.map(review => (
+            <Review review={review} />
+          ))}
         </ListGroup>
 
         <ReviewForm />

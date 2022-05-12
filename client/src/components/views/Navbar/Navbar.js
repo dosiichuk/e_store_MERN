@@ -2,9 +2,12 @@ import React from 'react';
 import { Container, Navbar, NavDropdown, Nav, Button } from 'react-bootstrap';
 import { FaCartPlus, FaPersonBooth } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getCartCount } from '../../../redux/cartRedux';
 import styles from './Navbar.module.scss';
 
 const NavbarComponent = () => {
+  const cartCount = useSelector(getCartCount);
   return (
     <Navbar className={styles.navbar} expand='lg'>
       <Container>
@@ -20,9 +23,12 @@ const NavbarComponent = () => {
               aria-label='button-group'
             >
               <Link to='/cart' className='mx-2'>
-                <span className='px-2 btn btn-primary'>
+                <span className='px-2 btn btn-primary position-relative'>
                   <FaCartPlus />
                   <span className='px-2'>Cart</span>
+                  {cartCount > 0 && (
+                    <span className={styles.cartCount}>{cartCount}</span>
+                  )}
                 </span>
               </Link>
               <Link to='/' className='mx-2'>
