@@ -10,8 +10,6 @@ import Filter from '../../features/Filter/Filter';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
-import styles from './Product.module.scss';
-
 const Component = ({ propName }) => {
   return (
     <Container className='mt-4'>

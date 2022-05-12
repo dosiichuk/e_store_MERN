@@ -15,6 +15,13 @@ export const initialState = {
       error: false,
     },
   },
+  orders: {
+    orders: [],
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
   user: {
     loggedIn: true,
     name: 'John Doe',

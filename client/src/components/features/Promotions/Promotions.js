@@ -14,7 +14,7 @@ const Promotions = () => {
           />
           <div className={styles.promotionContent}>
             <h5 className={styles.title}>Cheapest offers</h5>
-            <a href='#' className='btn btn-primary btn-outline-light'>
+            <a href='/' className='btn btn-primary btn-outline-light'>
               See details
             </a>
           </div>
@@ -27,7 +27,7 @@ const Promotions = () => {
           />
           <div className={styles.promotionContent}>
             <h5 className={styles.title}>The most popular</h5>
-            <a href='#' className='btn btn-primary btn-outline-light'>
+            <a href='/' className='btn btn-primary btn-outline-light'>
               See details
             </a>
           </div>
@@ -40,7 +40,7 @@ const Promotions = () => {
           />
           <div className={styles.promotionContent}>
             <h5 className={styles.title}>Highest rated</h5>
-            <a href='#' className='btn btn-primary btn-outline-light'>
+            <a href='/' className='btn btn-primary btn-outline-light'>
               See details
             </a>
           </div>

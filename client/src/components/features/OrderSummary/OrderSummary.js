@@ -1,37 +1,56 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import clsx from 'clsx';
+import { connect } from 'react-redux';
+import { getCartProducts } from '../../../redux/cartRedux';
 import styles from './OrderSummary.module.scss';
 
-const OrderSummary = () => {
+const Component = ({ cartProducts }) => {
   return (
     <div>
       <Table bordered className={clsx('mt-4', styles.table)}>
         <thead>
           <tr>
-            <th>First Name</th>
+            <th>Cart items:</th>
+            <th>Price:</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {cartProducts.map((product, index) => (
+            <tr key={index}>
+              <td>{product.title}</td>
+              <td>
+                ${product.price} X {product.quantity} = $
+                {product.price * product.quantity}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
-      <div>Subtotal:</div>
-      <div>Shipping:</div>
-      <div>Total:</div>
+      <div className='my-2'>
+        Subtotal:{' '}
+        <strong>
+          ${cartProducts.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+        </strong>
+      </div>
+      <div className='my-2'>
+        Shipping: <strong>$49.99</strong>
+      </div>
+      <div className='my-2'>
+        Total:{' '}
+        <strong>
+          $
+          {cartProducts.reduce((acc, curr) => acc + curr.price * curr.quantity, 0) +
+            49.99}
+        </strong>
+      </div>
     </div>
   );
 };
 
-export default OrderSummary;
+const mapStateToProps = state => ({
+  cartProducts: getCartProducts(state),
+});
+
+const Container = connect(mapStateToProps, null)(Component);
+export { Container as OrderSummary, Component as OrderSummaryComponent };

@@ -6,12 +6,14 @@ import { initialState } from './initialState';
 import { reducer as productsReducer } from './productsRedux';
 import { reducer as authReducer } from './authRedux';
 import { reducer as cartReducer } from './cartRedux';
+import { reducer as orderReducer } from './orderRedux';
 
 // define reducers
 const reducers = {
   products: productsReducer,
   user: authReducer,
   cart: cartReducer,
+  orders: orderReducer,
 };
 
 // add blank reducers for initial state properties without reducers

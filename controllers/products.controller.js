@@ -4,10 +4,9 @@ const { validateBody } = require('../validators/validator');
 
 exports.getAll = async (req, res, next) => {
   try {
-    console.log('running get');
     const products = await Product.find();
     const user = await User.find();
-    console.log(products, user);
+
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: err });

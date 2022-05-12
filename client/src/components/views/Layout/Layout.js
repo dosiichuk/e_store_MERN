@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactNode } from 'react';
+
 import { Container } from 'react-bootstrap';
 import Promotions from '../../features/Promotions/Promotions';
 import ContactSection from '../ContactSection/ContactSection';

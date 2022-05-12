@@ -26,6 +26,7 @@ app.use(passport.session());
 const productRoutes = require('./routes/products.routes');
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
+const orderRoutes = require('./routes/orders.routes');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.use('/auth', authRoutes);
 app.use('/api', productRoutes);
 app.use('/api', userRoutes);
+app.use('/api', orderRoutes);
 
 app.get('/api', (req, res) => {
   res.status(404).send({ post: 'Not found...' });

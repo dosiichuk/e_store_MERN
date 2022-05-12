@@ -10,19 +10,19 @@ const Footer = () => {
           <div className='col-md-6'>
             <ul className='list-inline m-0'>
               <li className='list-inline-item px-1'>
-                <a href='#'>About</a>
+                <a href='/'>About</a>
               </li>
               <li className='list-inline-item px-1'>
-                <a href='#'>Delivery</a>
+                <a href='/'>Delivery</a>
               </li>
               <li className='list-inline-item px-1'>
-                <a href='#'>Returns</a>
+                <a href='/'>Returns</a>
               </li>
               <li className='list-inline-item px-1'>
-                <a href='#'>Privacy policy</a>
+                <a href='/'>Privacy policy</a>
               </li>
               <li className='list-inline-item px-1'>
-                <a href='#'>Terms and conditions</a>
+                <a href='/'>Terms and conditions</a>
               </li>
             </ul>
           </div>

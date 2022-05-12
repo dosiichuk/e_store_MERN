@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Card, ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import CartItem from '../../common/CartItem/CartItem';
+import { CartItem } from '../../common/CartItem/CartItem';
 import Filter from '../Filter/Filter';
-import OrderSummary from '../OrderSummary/OrderSummary';
-
-import styles from './Cart.module.scss';
+import { OrderSummary } from '../OrderSummary/OrderSummary';
 
 import { getCartProducts } from '../../../redux/cartRedux';
 
@@ -22,11 +20,7 @@ const Cart = () => {
       <div className='col-sm-12 col-md-8 col-lg-8'>
         <Card body>
           <h2>Your cart</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
-            libero ipsum fuga rerum id sit unde quis incidunt voluptates. Molestiae
-            quaerat voluptatibus cupiditate delectus!
-          </p>
+          <p>Here is your cart. Maybe add smth more to it!</p>
           <ListGroup as='ul'>
             {cartItems.map((item, index) => (
               <CartItem key={index} item={item} />

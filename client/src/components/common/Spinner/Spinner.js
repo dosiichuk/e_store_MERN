@@ -12,8 +12,6 @@ import { Spinner } from 'react-bootstrap';
 
 // interface Props extends PropsFromRedux {}
 
-import styles from './Spinner.module.scss';
-
 const Component = ({ propName }) => {
   return <Spinner animation='border' variant='success' />;
 };

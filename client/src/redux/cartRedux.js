@@ -15,11 +15,16 @@ const createActionName = name => `app/${reducerName}/${name}`;
 /* action types */
 const ADD_TO_CART = createActionName('ADD_TO_CART');
 const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
+const CHANGE_PRODUCT_QUANTITY = createActionName('CHANGE_PRODUCT_QUANTITY');
 
 /* action creators */
 
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const removeFromCart = payload => ({ payload, type: REMOVE_FROM_CART });
+export const changeProductQuantity = payload => ({
+  payload,
+  type: CHANGE_PRODUCT_QUANTITY,
+});
 
 /* thunk creators */
 
@@ -48,6 +53,16 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         products: statePart.products.filter(product => product._id !== action.payload),
+      };
+    }
+    case CHANGE_PRODUCT_QUANTITY: {
+      return {
+        ...statePart,
+        products: statePart.products.map(product =>
+          product._id === action.payload._id
+            ? { ...product, quantity: product.quantity + action.payload.changeBy }
+            : product
+        ),
       };
     }
 

@@ -15,8 +15,6 @@ import Filter from '../../features/Filter/Filter';
 
 // interface Props extends PropsFromRedux {}
 
-import styles from './Home.module.scss';
-
 const Component = ({ propName }) => {
   return (
     <div>

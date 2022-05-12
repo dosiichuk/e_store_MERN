@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { ListGroup } from 'react-bootstrap';
 // import { connect, ConnectedProps } from 'react-redux';
@@ -23,6 +23,7 @@ const Component = ({ className, children, review }) => {
       >
         <img
           className={styles.userImage}
+          alt={review}
           src='https://images.unsplash.com/photo-1509087859087-a384654eca4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
         />
         <div className='ms-2 me-auto'>

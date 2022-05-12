@@ -13,8 +13,6 @@ import Cart from '../../features/Cart/Cart';
 
 // interface Props extends PropsFromRedux {}
 
-import styles from './Cart.module.scss';
-
 const Component = ({ propName }) => {
   return (
     <Container className='mt-4'>

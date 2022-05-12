@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 import styles from './ContactSection.module.scss';
 
@@ -36,16 +36,16 @@ const ContactSection = () => {
               <h3>Computer store</h3>
               <p>Visit our social media pages.</p>
               <div className='icon-box'>
-                <a href='#'>
+                <a href='/'>
                   <FaTwitter className='mx-2' />
                 </a>
-                <a href='#'>
+                <a href='/'>
                   <FaInstagram className='mx-2' />
                 </a>
-                <a href='#'>
+                <a href='/'>
                   <FaTwitter className='mx-2' />
                 </a>
-                <a href='#'>
+                <a href='/'>
                   <FaYoutube className='mx-2' />
                 </a>
               </div>
@@ -56,7 +56,7 @@ const ContactSection = () => {
               <h3>Contact Us</h3>
               <p className='m-0'>2798 Brisbane Road</p>
               <p className='m-0'>Dull City 78dfg6 Slivonia</p>
-              <a href='#'>support@company.com</a>
+              <a href='/'>support@company.com</a>
             </div>
           </div>
         </div>

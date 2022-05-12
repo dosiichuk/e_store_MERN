@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
-const CartSchema = new mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
   totalPrice: { type: Number, min: 0 },
-  userNotes: { type: String, required: true },
-  products: [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Product', default: [] },
-  ],
+  deliveryAddress: { type: String, required: true },
+  phoneNumber: { type: String },
+  products: [{ type: Object }],
+  userNotes: { type: String },
   createdAt: { type: String, required: true, default: Date.now },
 });
 
 // OUR TODO MODEL
-module.exports = mongoose.model('Cart', CartSchema);
+module.exports = mongoose.model('Order', OrderSchema);

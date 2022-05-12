@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Hero from '../../views/Hero/Hero';
 
 // import { connect, ConnectedProps } from 'react-redux';
 // import { Action } from 'redux';
@@ -12,8 +11,6 @@ import Hero from '../../views/Hero/Hero';
 // type PropsFromRedux = ConnectedProps<typeof connector>;
 
 // interface Props extends PropsFromRedux {}
-
-import styles from './Login.module.scss';
 
 const Component = ({ propName }) => {
   return (
