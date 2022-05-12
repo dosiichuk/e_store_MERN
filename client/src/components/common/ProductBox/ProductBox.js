@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart } from '../../../redux/cartRedux';

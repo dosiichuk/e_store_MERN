@@ -3,13 +3,6 @@ import { Container } from 'react-bootstrap';
 import { ProductSummary } from '../../features/ProductSummary/ProductSummary';
 import Filter from '../../features/Filter/Filter';
 
-// import { connect, ConnectedProps } from 'react-redux';
-// import { Action } from 'redux';
-// import { ThunkDispatch } from 'redux-thunk';
-
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
 const Component = ({ propName }) => {
   return (
     <Container className='mt-4'>
@@ -26,21 +19,4 @@ const Component = ({ propName }) => {
   );
 };
 
-// const mapStateToProps = (state: RootState) => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = (
-//   dispatch: ThunkDispatch<RootState, undefined, Action>
-// ) => ({
-//   loadUserEvents: () => dispatch(loadUserEvents()),
-// });
-
-// const connector = connect(mapStateToProps, mapDispatchToProps);
-// const Container = connector(Component);
-
-export {
-  Component as Product,
-  // Container as Product,
-  Component as ProductComponent,
-};
+export { Component as Product, Component as ProductComponent };

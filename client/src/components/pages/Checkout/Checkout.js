@@ -6,17 +6,6 @@ import { CheckoutForm } from '../../features/CheckoutForm/CheckoutForm';
 import { OrderSummary } from '../../features/OrderSummary/OrderSummary';
 import { getCartProducts } from '../../../redux/cartRedux';
 
-// import { connect, ConnectedProps } from 'react-redux';
-// import { Action } from 'redux';
-// import { ThunkDispatch } from 'redux-thunk';
-
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
-// type PropsFromRedux = ConnectedProps<typeof connector>;
-
-// interface Props extends PropsFromRedux {}
-
 const Component = ({ cartProducts }) => {
   return (
     <div className='mt-4'>
@@ -47,12 +36,6 @@ const Component = ({ cartProducts }) => {
 const mapStateToProps = state => ({
   cartProducts: getCartProducts(state),
 });
-
-// const mapDispatchToProps = (
-//   dispatch: ThunkDispatch<RootState, undefined, Action>
-// ) => ({
-//   loadUserEvents: () => dispatch(loadUserEvents()),
-// });
 
 const ContainerComponent = connect(mapStateToProps, null)(Component);
 
