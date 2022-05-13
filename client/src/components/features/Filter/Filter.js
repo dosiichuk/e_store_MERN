@@ -3,7 +3,7 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const Filter = () => {
   return (
-    <Card>
+    <Card className='mb-4'>
       <Card.Body>
         <Card.Title>
           <h2>Categories</h2>
