@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 
 import styles from './Review.module.scss';
@@ -24,6 +25,15 @@ const Component = ({ className, review }) => {
       </ListGroup.Item>
     </div>
   );
+};
+
+Component.propTypes = {
+  className: PropTypes.string.isRequired,
+  review: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    product: PropTypes.string.isRequired,
+  }),
 };
 
 export { Component as Review, Component as ReviewComponent };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 
 import { AmountWidget } from '../AmountWidget/AmountWidget';
@@ -20,6 +21,17 @@ const Component = ({ item }) => {
       <AmountWidget quantity={item.quantity} _id={item._id} />
     </ListGroup.Item>
   );
+};
+
+Component.propTypes = {
+  item: PropTypes.shape({
+    quantity: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }),
 };
 
 export { Component as CartItem, Component as CartItemComponent };

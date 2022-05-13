@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -46,6 +47,16 @@ const Component = ({
       </Card.Body>
     </Card>
   );
+};
+
+Component.propTypes = {
+  _id: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  addProductToCart: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

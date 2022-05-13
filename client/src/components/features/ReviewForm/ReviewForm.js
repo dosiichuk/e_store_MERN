@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -53,5 +54,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+Component.propTypes = {
+  className: PropTypes.string,
+  userId: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  sendReview: PropTypes.func.isRequired,
+};
 
 export { Container as ReviewForm, Component as ReviewFormComponent };

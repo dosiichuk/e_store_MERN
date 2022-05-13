@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Card, ListGroup } from 'react-bootstrap';
 
@@ -29,6 +29,11 @@ const Component = ({ className, reviews }) => {
       </Card>
     </div>
   );
+};
+
+Component.propTypes = {
+  className: PropTypes.string,
+  reviews: PropTypes.array,
 };
 
 export { Component as ReviewBoard, Component as ReviewBoardComponent };

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   fetchProductsRequest,
@@ -35,5 +36,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+Component.propTypes = {
+  fetchProducts: PropTypes.func.isRequired,
+  products: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
 
 export { Container as AllProducts, Component as AllProductsComponent };

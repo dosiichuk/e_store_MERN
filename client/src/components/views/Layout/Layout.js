@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Container } from 'react-bootstrap';
 import Promotions from '../../features/Promotions/Promotions';
@@ -18,6 +19,10 @@ const Layout = ({ children }) => {
       <Footer />
     </>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Layout;

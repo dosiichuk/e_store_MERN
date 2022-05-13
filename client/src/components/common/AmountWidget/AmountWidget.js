@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ButtonGroup, Button } from 'react-bootstrap';
+
 import { changeProductQuantity, removeFromCart } from '../../../redux/cartRedux';
 
 const Component = ({
@@ -26,6 +28,7 @@ const Component = ({
         <input
           style={{ width: '3rem', textAlign: 'center', fontWeight: '800' }}
           value={quantity}
+          readOnly
         />
         <Button onClick={() => changeProductQuantityBy({ _id, changeBy: 1 })}>+</Button>
       </ButtonGroup>
@@ -47,5 +50,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Container = connect(null, mapDispatchToProps)(Component);
+
+Component.propTypes = {
+  _id: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  changeProductQuantityBy: PropTypes.func.isRequired,
+  removeProductFromCart: PropTypes.func.isRequired,
+};
 
 export { Container as AmountWidget, Component as AmountWidgetComponent };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
@@ -53,4 +54,9 @@ const mapStateToProps = state => ({
 });
 
 const Container = connect(mapStateToProps, null)(Component);
+
+Component.propTypes = {
+  cartProducts: PropTypes.array,
+};
+
 export { Container as OrderSummary, Component as OrderSummaryComponent };

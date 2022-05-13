@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
@@ -93,5 +94,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+Component.propTypes = {
+  className: PropTypes.string,
+  createOrder: PropTypes.func.isRequired,
+  cartProducts: PropTypes.array,
+  userId: PropTypes.string.isRequired,
+  clearCart: PropTypes.func.isRequired,
+};
 
 export { Container as CheckoutForm, Component as CheckoutFormComponent };

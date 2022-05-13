@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Filter from '../../features/Filter/Filter';
@@ -37,5 +38,9 @@ const mapStateToProps = state => ({
 });
 
 const ContainerComponent = connect(mapStateToProps, null)(Component);
+
+Component.propTypes = {
+  cartProducts: PropTypes.array,
+};
 
 export { ContainerComponent as Checkout, Component as CheckoutComponent };

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, connect } from 'react-redux';
 import clsx from 'clsx';
 import { Card } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import styles from './ProductSummary.module.scss';
 import { ReviewBoard } from '../ReviewBoard/ReviewBoard';
@@ -11,7 +12,12 @@ import { addToCart } from '../../../redux/cartRedux';
 
 const Component = ({ className, addProductToCart }) => {
   const { id } = useParams();
+  const history = useHistory();
   const product = useSelector(state => getProductById(state, id));
+  if (!product) {
+    history.push('/');
+    return null;
+  }
   return (
     <div className={clsx(className, styles.root)}>
       <Card body>
@@ -37,5 +43,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Container = connect(null, mapDispatchToProps)(Component);
+
+Component.propTypes = {
+  className: PropTypes.string,
+  addProductToCart: PropTypes.func.isRequired,
+};
 
 export { Container as ProductSummary, Component as ProductSummaryComponent };

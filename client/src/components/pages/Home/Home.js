@@ -4,7 +4,7 @@ import Hero from '../../views/Hero/Hero';
 import { AllProducts } from '../../views/AllProducts/AllProducts';
 import Filter from '../../features/Filter/Filter';
 
-const Component = ({ propName }) => {
+const Component = () => {
   return (
     <div>
       <Hero />
