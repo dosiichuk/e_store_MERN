@@ -2,4 +2,9 @@
   height: 4rem;
   width: 4rem;
   object-fit: cover;
+
+  @media (max-width: 775px) {
+    height: 8rem;
+    width: 100%;
+  }
 }

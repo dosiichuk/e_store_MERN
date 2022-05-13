@@ -1,30 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { Form, Button } from 'react-bootstrap';
-// import { connect, ConnectedProps } from 'react-redux';
-// import { Action } from 'redux';
-// import { ThunkDispatch } from 'redux-thunk';
-
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
-// type PropsFromRedux = ConnectedProps<typeof connector>;
-
-// interface Props extends PropsFromRedux {}
+import { connect } from 'react-redux';
 
 import styles from './ReviewForm.module.scss';
+import { getUserData } from '../../../redux/authRedux';
+import { createReviewRequest } from '../../../redux/productsRedux';
+import { useParams } from 'react-router-dom';
 
-const Component = ({ className, children }) => {
+const Component = ({ className, userId, userName, sendReview }) => {
+  const { id } = useParams();
+  const [text, setText] = useState('');
+  const submitHandler = e => {
+    e.preventDefault();
+    sendReview({ user: userId, product: id, text, userName });
+    setText('');
+  };
+
   return (
     <div className={clsx(className, styles.root, 'pt-4')}>
-      <h2>ReviewForm</h2>
-      <Form>
+      <h2>Add review for this product</h2>
+      <Form onSubmit={submitHandler}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Review:</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter review text'
             autoComplete='false'
+            value={text}
+            onChange={e => setText(e.target.value)}
           />
           <Form.Text className='text-muted'>
             Thank you for helping others to make choice!
@@ -39,21 +43,15 @@ const Component = ({ className, children }) => {
   );
 };
 
-// const mapStateToProps = (state: RootState) => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  userId: getUserData(state).id,
+  userName: getUserData(state).name,
+});
 
-// const mapDispatchToProps = (
-//   dispatch: ThunkDispatch<RootState, undefined, Action>
-// ) => ({
-//   loadUserEvents: () => dispatch(loadUserEvents()),
-// });
+const mapDispatchToProps = dispatch => ({
+  sendReview: reviewData => dispatch(createReviewRequest(reviewData)),
+});
 
-// const connector = connect(mapStateToProps, mapDispatchToProps);
-// const Container = connector(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
-export {
-  Component as ReviewForm,
-  // Container as ReviewForm,
-  Component as ReviewFormComponent,
-};
+export { Container as ReviewForm, Component as ReviewFormComponent };

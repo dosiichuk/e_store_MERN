@@ -31,9 +31,13 @@ export const createOrderRequest = formData => async (dispatch, getState) => {
       data: formData,
       headers: { 'Content-Type': 'application/json' },
     });
-    dispatch(createOrder(response.data));
+    if (response.data) {
+      dispatch(fetchSuccess());
+      dispatch(createOrder(response.data));
+    } else {
+      throw new Error('Smth went wrong with your order!', 500);
+    }
   } catch (err) {
-    console.log(err);
     dispatch(fetchError(err));
   }
 };

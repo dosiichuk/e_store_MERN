@@ -9,7 +9,7 @@ import { ReviewBoard } from '../ReviewBoard/ReviewBoard';
 import { getProductById } from '../../../redux/productsRedux';
 import { addToCart } from '../../../redux/cartRedux';
 
-const Component = ({ className, children, addProductToCart }) => {
+const Component = ({ className, addProductToCart }) => {
   const { id } = useParams();
   const product = useSelector(state => getProductById(state, id));
   return (

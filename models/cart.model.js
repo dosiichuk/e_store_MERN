@@ -10,5 +10,4 @@ const CartSchema = new mongoose.Schema({
   createdAt: { type: String, required: true, default: Date.now },
 });
 
-// OUR TODO MODEL
 module.exports = mongoose.model('Cart', CartSchema);

@@ -11,11 +11,13 @@ import { Product } from './components/pages/Product/Product';
 import { Checkout } from './components/pages/Checkout/Checkout';
 import { Login } from './components/pages/Login/Login';
 import './styles/global.scss';
+import { ScrollToTop } from './components/features/ScrollToTop/ScrollToTop';
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Layout>
+        <ScrollToTop />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/cart' component={Cart} />

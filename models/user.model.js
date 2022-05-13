@@ -12,5 +12,4 @@ const UserSchema = new mongoose.Schema({
   ],
 });
 
-// OUR TODO MODEL
 module.exports = mongoose.model('User', UserSchema);

@@ -7,7 +7,7 @@ import styles from './ReviewBoard.module.scss';
 import { Review } from '../../common/Review/Review';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-const Component = ({ className, children, reviews }) => {
+const Component = ({ className, reviews }) => {
   if (!reviews || reviews.length === 0)
     return (
       <div>
@@ -21,7 +21,7 @@ const Component = ({ className, children, reviews }) => {
       <Card body>
         <ListGroup as='ul'>
           {reviews.map(review => (
-            <Review review={review} />
+            <Review key={review._id} review={review} />
           ))}
         </ListGroup>
 

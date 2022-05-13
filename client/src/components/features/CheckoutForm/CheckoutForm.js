@@ -3,23 +3,13 @@ import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
 
-// import { connect, ConnectedProps } from 'react-redux';
-// import { Action } from 'redux';
-// import { ThunkDispatch } from 'redux-thunk';
-
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
-// type PropsFromRedux = ConnectedProps<typeof connector>;
-
-// interface Props extends PropsFromRedux {}
 import { createOrderRequest } from '../../../redux/orderRedux';
 
 import styles from './CheckoutForm.module.scss';
-import { getCartProducts } from '../../../redux/cartRedux';
+import { clearCart, getCartProducts } from '../../../redux/cartRedux';
 import { getUserData } from '../../../redux/authRedux';
 
-const Component = ({ className, createOrder, cartProducts, userId }) => {
+const Component = ({ className, createOrder, cartProducts, userId, clearCart }) => {
   const [email, setEmail] = useState('');
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -37,6 +27,11 @@ const Component = ({ className, createOrder, cartProducts, userId }) => {
         0
       ),
     });
+    setEmail('');
+    setPhoneNumber('');
+    setDeliveryAddress('');
+    setUserNotes('');
+    clearCart([]);
   };
   return (
     <div className={clsx(className, styles.root)}>
@@ -94,6 +89,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createOrder: orderData => dispatch(createOrderRequest(orderData)),
+  clearCart: payload => dispatch(clearCart(payload)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

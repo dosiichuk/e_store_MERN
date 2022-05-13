@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
-const Component = ({ propName }) => {
+const Component = () => {
   return <Spinner animation='border' variant='success' />;
 };
 
