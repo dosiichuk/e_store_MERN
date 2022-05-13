@@ -1,5 +1,4 @@
 const Order = require('../models/order.model');
-const { validateBody } = require('../validators/validator');
 
 exports.createOne = async (req, res) => {
   try {
@@ -10,7 +9,6 @@ exports.createOne = async (req, res) => {
     await newOrder.save();
     res.json(newOrder);
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: err });
   }
 };
