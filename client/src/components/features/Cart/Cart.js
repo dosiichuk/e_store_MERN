@@ -10,7 +10,15 @@ import { getCartProducts } from '../../../redux/cartRedux';
 
 const Cart = () => {
   const cartItems = useSelector(getCartProducts);
-  if (cartItems.length === 0) return <div>Your cart is empty. Maybe buy smth!</div>;
+  if (cartItems.length === 0)
+    return (
+      <div>
+        <div>Your cart is empty. Maybe buy smth!</div>
+        <Link to='/' className='btn'>
+          Back to the shop
+        </Link>
+      </div>
+    );
   return (
     <div className='row'>
       <div className='col-sm-12 col-md-4 col-lg-4'>
@@ -27,7 +35,10 @@ const Cart = () => {
           </ListGroup>
           <OrderSummary />
           <Link to='/cart/checkout'>
-            <span className='btn'>Proceed to checkout</span>
+            <span className='btn d-inline-block mx-2'>Checkout</span>
+          </Link>
+          <Link to='/'>
+            <span className='btn'>Keep shopping</span>
           </Link>
         </Card>
       </div>

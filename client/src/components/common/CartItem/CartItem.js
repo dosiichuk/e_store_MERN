@@ -29,7 +29,7 @@ Component.propTypes = {
     price: PropTypes.number.isRequired,
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     description: PropTypes.string.isRequired,
   }),
 };

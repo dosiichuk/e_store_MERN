@@ -6,7 +6,6 @@ import { ListGroup } from 'react-bootstrap';
 import styles from './Review.module.scss';
 
 const Component = ({ className, review }) => {
-  console.log('review from rev', review);
   return (
     <div className={clsx(className, styles.root)}>
       <ListGroup.Item
@@ -28,8 +27,9 @@ const Component = ({ className, review }) => {
 };
 
 Component.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   review: PropTypes.shape({
+    _id: PropTypes.string,
     text: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
     product: PropTypes.string.isRequired,
