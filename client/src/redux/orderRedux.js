@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../config';
+import { BASE_URL } from '../config';
 
 /* selectors */
 export const getIsLoading = ({ products }) => products.loading.active;
@@ -27,7 +27,7 @@ export const createOrderRequest = formData => async (dispatch, getState) => {
     dispatch(fetchStarted());
     const response = await axios({
       method: 'post',
-      url: `${config.api.baseUrl}/orders`,
+      url: `${BASE_URL}/api/orders`,
       data: formData,
       headers: { 'Content-Type': 'application/json' },
     });

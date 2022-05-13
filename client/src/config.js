@@ -1,7 +1,2 @@
-const config = {
-  api: {
-    baseUrl: 'http://localhost:8000/api',
-  },
-};
-
-export default config;
+export const BASE_URL =
+  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8000';

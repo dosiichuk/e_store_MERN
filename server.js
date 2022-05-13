@@ -10,10 +10,7 @@ const session = require('express-session');
 const passportConfig = require('./config/passport');
 
 const app = express();
-app.use(
-  '/uploads/images',
-  express.static(path.join(__dirname, 'uploads', 'images'))
-);
+
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 // init session mechanism
@@ -51,15 +48,6 @@ app.use('/api', reviewRoutes);
 
 app.get('/api', (req, res) => {
   res.status(404).send({ post: 'Not found...' });
-});
-
-app.use((error, req, res, next) => {
-  //is an error occurs and there is a file sent with request, delete it!
-  if (req.file) {
-    fs.unlink(req.file.path, (err) => {
-      console.log(err);
-    });
-  }
 });
 
 app.get('*', (req, res) => {

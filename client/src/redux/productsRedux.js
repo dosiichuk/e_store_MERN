@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../config';
+import { BASE_URL } from '../config';
 
 /* selectors */
 export const getAll = ({ products }) => {
@@ -35,7 +35,7 @@ export const fetchProductsRequest = () => async (dispatch, getState) => {
     const isLoading = getIsLoading(getState());
     if (productDataIsEmpty && !isLoading) {
       dispatch(fetchStarted());
-      const { data } = await axios.get(`${config.api.baseUrl}/products`);
+      const { data } = await axios.get(`${BASE_URL}/api/products`);
       if (data.length > 0) {
         dispatch(fetchSuccess(data));
       }
@@ -49,7 +49,7 @@ export const createReviewRequest = reviewData => async (dispatch, getState) => {
   try {
     const response = await axios({
       method: 'post',
-      url: `${config.api.baseUrl}/reviews`,
+      url: `${BASE_URL}/api/reviews`,
       data: reviewData,
       headers: { 'Content-Type': 'application/json' },
     });
