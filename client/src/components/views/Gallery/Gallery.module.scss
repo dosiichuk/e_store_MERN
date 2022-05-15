@@ -1,0 +1,33 @@
+@import "../../../styles/global.scss";
+.composition {
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 20vh;
+
+  &__photo {
+    box-shadow: 0 1.5rem 4rem rgba(var(--color-dark-cyan), 0.4);
+    border-radius: 2px;
+    transition: all 0.2s;
+    outline-offset: 2rem;
+    object-fit: cover;
+
+    position: relative;
+    max-width: 33.33333333%;
+    height: 20vh;
+    box-shadow: 0 1.5rem 3rem rgba(var(--color-dark-cyan), 0.2);
+
+    &:hover {
+      outline: 0.5rem solid var(--color-dark-cyan);
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(var(--color-dark-cyan), 0.5);
+      z-index: 20;
+    }
+  }
+
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}

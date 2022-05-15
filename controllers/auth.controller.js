@@ -6,13 +6,14 @@ exports.getUser = async (req, res, next) => {
     if (!loggedIn && !req.user) {
       return res.json({ message: 'Not logged in!' });
     }
-    const user = await User.findOne({ googleId: { $eq: req.user.id } });
-    if (!user) {
+    let user = await User.findOne({ googleId: { $eq: req.user.id } });
+    if (user === null) {
       user = new User({
-        googleId: req.user.sub,
-        firstName: req.user.given_name,
-        firstName: req.user.family_name,
-        email: req.user.email,
+        googleId: req.user.id,
+        firstName: req.user.name.givenName,
+        lastName: req.user.name.familyName,
+        name: `${req.user.name.givenName} ${req.user.name.familyName}`,
+        email: req.user.emails[0].value,
       });
       await user.save();
     }

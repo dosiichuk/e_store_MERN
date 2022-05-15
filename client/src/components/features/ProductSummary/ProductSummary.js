@@ -9,6 +9,7 @@ import styles from './ProductSummary.module.scss';
 import { ReviewBoard } from '../ReviewBoard/ReviewBoard';
 import { getProductById } from '../../../redux/productsRedux';
 import { addToCart } from '../../../redux/cartRedux';
+import { Gallery } from '../../views/Gallery/Gallery';
 
 const Component = ({ className, addProductToCart }) => {
   const { id } = useParams();
@@ -22,8 +23,10 @@ const Component = ({ className, addProductToCart }) => {
     <div className={clsx(className, styles.root)}>
       <Card body>
         <h2>{product.title}</h2>
-        <p>{product.description}</p>
-        <p>Price: ${product.price}</p>
+        <p>Product description: {product.description}</p>
+        <h5 style={{ fontWeight: '800' }}>Price: ${product.price}</h5>
+        <h5>Additional photos:</h5>
+        <Gallery imageUrlsArray={product.additionalPhotos} />
         <img
           src={product.image}
           alt={product.title}

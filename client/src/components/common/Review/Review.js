@@ -15,7 +15,7 @@ const Component = ({ className, review }) => {
         <img
           className={styles.userImage}
           alt={review._id}
-          src='https://images.unsplash.com/photo-1509087859087-a384654eca4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
+          src='https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
         />
         <div className='ms-2 me-auto'>
           <div className='fw-bold'>{review.userName}</div>
