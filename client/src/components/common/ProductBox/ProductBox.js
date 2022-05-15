@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToCart } from '../../../redux/cartRedux';
+import { addToCart, getCart, saveCartToLocalStorage } from '../../../redux/cartRedux';
 
 import styles from './ProductBox.module.scss';
 
@@ -15,6 +15,8 @@ const Component = ({
   description,
   rating,
   addProductToCart,
+  cart,
+  saveCartToLocalStorage,
 }) => {
   return (
     <Card className='col-sm-9 col-md-5 col-lg-5 px-2 py-2 mx-2 clickable align-self-stretch cursor-pointer'>
@@ -29,7 +31,7 @@ const Component = ({
           <Button
             variant='primary'
             className='d-block'
-            onClick={() =>
+            onClick={() => {
               addProductToCart({
                 _id,
                 image,
@@ -37,8 +39,9 @@ const Component = ({
                 price,
                 description,
                 rating,
-              })
-            }
+              });
+              saveCartToLocalStorage(cart);
+            }}
           >
             Add to cart!
           </Button>
@@ -59,10 +62,15 @@ Component.propTypes = {
   addProductToCart: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  addProductToCart: product => dispatch(addToCart(product)),
+const mapStateToProps = state => ({
+  cart: getCart(state),
 });
 
-const Container = connect(null, mapDispatchToProps)(Component);
+const mapDispatchToProps = dispatch => ({
+  addProductToCart: product => dispatch(addToCart(product)),
+  saveCartToLocalStorage: cart => dispatch(saveCartToLocalStorage(cart)),
+});
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export { Container as ProductBox };

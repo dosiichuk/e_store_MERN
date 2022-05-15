@@ -34,6 +34,7 @@ const Component = ({ className, createOrder, cartProducts, userId, clearCart }) 
     setDeliveryAddress('');
     setUserNotes('');
     clearCart([]);
+    window.localStorage.removeItem('cart');
   };
 
   return (

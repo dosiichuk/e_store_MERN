@@ -11,13 +11,11 @@ const reducerName = 'user';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const LOGIN_START = createActionName('LOGIN_START');
 const LOGIN_SUCCESS = createActionName('LOGIN_SUCCESS');
 const LOGOUT_SUCCESS = createActionName('LOGOUT_SUCCESS');
 const LOGIN_ERROR = createActionName('LOGIN_ERROR');
 
 /* action creators */
-export const loginStarted = payload => ({ payload, type: LOGIN_START });
 export const loginSuccess = payload => ({ payload, type: LOGIN_SUCCESS });
 export const loginError = payload => ({ payload, type: LOGIN_ERROR });
 export const logoutSuccess = payload => ({ payload, type: LOGOUT_SUCCESS });
@@ -51,15 +49,6 @@ export const loginRequest = () => async (dispatch, getState) => {
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
   switch (action.type) {
-    case LOGIN_START: {
-      return {
-        ...statePart,
-        loading: {
-          active: true,
-          error: false,
-        },
-      };
-    }
     case LOGIN_SUCCESS: {
       return {
         ...statePart,

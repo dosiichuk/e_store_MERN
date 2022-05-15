@@ -8,13 +8,24 @@ const helmet = require('helmet');
 const passport = require('passport');
 const session = require('express-session');
 const passportConfig = require('./config/passport');
+const MongoStore = require('connect-mongo');
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 // init session mechanism
-app.use(session({ secret: process.env.sessionSecret }));
+app.use(
+  session({
+    secret: process.env.sessionSecret,
+    store: MongoStore.create({
+      mongoUrl: process.env.DATABASE.replace(
+        '<password>',
+        process.env.DATABASE_PASSWORD
+      ),
+    }),
+  })
+);
 
 //initialize passport
 app.use(passport.initialize());

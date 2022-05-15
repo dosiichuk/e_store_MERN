@@ -1,5 +1,5 @@
 {
-  "name": "testimonials",
+  "name": "e_store",
   "version": "1.0.0",
   "engines": {
     "node": "14.18.0"
@@ -10,6 +10,7 @@
   "dependencies": {
     "chai": "^4.3.6",
     "chai-http": "4.3.0",
+    "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "express-session": "^1.17.2",

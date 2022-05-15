@@ -2,6 +2,7 @@
 export const getCartProducts = ({ cart }) => {
   return cart.products;
 };
+export const getCart = ({ cart }) => cart;
 
 export const getCartCount = ({ cart }) => {
   if (cart.products.length === 0) return 0;
@@ -18,6 +19,10 @@ const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 const CHANGE_PRODUCT_QUANTITY = createActionName('CHANGE_PRODUCT_QUANTITY');
 const ADD_NOTE_TO_ITEM = createActionName('ADD_NOTE_TO_ITEM');
 const CLEAR_CART = createActionName('CLEAR_CART');
+const SAVE_CART_TO_LOCAL_STORAGE = createActionName('SAVE_CART_TO_LOCAL_STORAGE');
+const RETRIEVE_CART_FROM_LOCAL_STORAGE = createActionName(
+  'RETRIEVE_CART_FROM_LOCAl_STORAGE'
+);
 
 /* action creators */
 
@@ -29,6 +34,20 @@ export const changeProductQuantity = payload => ({
 });
 export const addNoteToItem = payload => ({ payload, type: ADD_NOTE_TO_ITEM });
 export const clearCart = payload => ({ payload, type: CLEAR_CART });
+export const saveCartToLocalStorage = payload => {
+  window.localStorage.setItem('cart', JSON.stringify(payload));
+  return {
+    payload,
+    type: SAVE_CART_TO_LOCAL_STORAGE,
+  };
+};
+export const retrieveCartFromLocalStorage = payload => {
+  const cart = JSON.parse(window.localStorage.getItem('cart'));
+  return {
+    payload: cart,
+    type: RETRIEVE_CART_FROM_LOCAL_STORAGE,
+  };
+};
 
 /* thunk creators */
 
@@ -81,6 +100,12 @@ export const reducer = (statePart = [], action = {}) => {
     }
     case CLEAR_CART: {
       return { ...statePart, products: action.payload };
+    }
+    case SAVE_CART_TO_LOCAL_STORAGE: {
+      return { ...statePart };
+    }
+    case RETRIEVE_CART_FROM_LOCAL_STORAGE: {
+      return { ...statePart, ...action.payload };
     }
     default:
       return statePart;
