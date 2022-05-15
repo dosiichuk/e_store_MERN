@@ -25,7 +25,6 @@ const Component = ({ item, addUserNote }) => {
         <AmountWidget quantity={item.quantity} _id={item._id} />
       </div>
       <div className='form-group'>
-        <label htmlFor='userNote'>Email address</label>
         <input
           type='textarea'
           className='form-control'
