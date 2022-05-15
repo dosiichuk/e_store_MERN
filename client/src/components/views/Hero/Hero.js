@@ -1,8 +1,12 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import { BASE_URL } from '../../../config';
 import styles from './Hero.module.scss';
 
 const Hero = () => {
+  const clickHanlder = () => {
+    window.open(`${BASE_URL}/auth/google`, '_self');
+  };
   return (
     <Carousel className={styles.carousel}>
       <Carousel.Item className={styles.carouselItem}>
@@ -16,7 +20,9 @@ const Hero = () => {
           <p className={styles.subtitle}>
             Nulla vitae elit libero, a pharetra augue mollis interdum.
           </p>
-          <button className='btn btn-large'>Signup</button>
+          <button className='btn btn-large' onClick={clickHanlder}>
+            Signup
+          </button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className={styles.carouselItem}>

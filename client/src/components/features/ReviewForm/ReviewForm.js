@@ -23,7 +23,7 @@ const Component = ({ className, userId, userName, sendReview }) => {
       <h2>Add review for this product</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Review:</Form.Label>
+          <Form.Label>Review (LOGIN FIRST!):</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter review text'
