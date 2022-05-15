@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { FaCartPlus, FaPersonBooth } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, connect } from 'react-redux';
+import { getLoginStatus, loginRequest, logoutSuccess } from '../../../redux/authRedux';
+import { BASE_URL } from '../../../config';
 import { getCartCount } from '../../../redux/cartRedux';
 import styles from './Navbar.module.scss';
 
-const NavbarComponent = () => {
+const Component = ({ login, loggedIn, logout }) => {
+  useEffect(() => {
+    login();
+  }, []);
+
   const cartCount = useSelector(getCartCount);
+  const handleLogin = () => {
+    window.open(`${BASE_URL}/auth/google`, '_self');
+  };
+  const handleLogout = () => {
+    logout();
+    window.open(`${BASE_URL}/auth/auth.logout`, '_self');
+  };
   return (
     <Navbar className={styles.navbar} expand='lg'>
       <Container>
@@ -31,12 +44,23 @@ const NavbarComponent = () => {
                   )}
                 </span>
               </Link>
-              <Link to='/' className='mx-2'>
-                <span className='px-2 btn btn-primary'>
+
+              {!loggedIn && (
+                <span className='mx-2 px-2 btn btn-primary'>
                   <FaPersonBooth />
-                  <span className='px-2'>Account</span>
+                  <span onClick={handleLogin} className='px-2'>
+                    Login
+                  </span>
                 </span>
-              </Link>
+              )}
+              {loggedIn && (
+                <span className='mx-2 px-2 btn btn-primary'>
+                  <FaPersonBooth />
+                  <span onClick={handleLogout} className='px-2'>
+                    Logout
+                  </span>
+                </span>
+              )}
             </div>
           </Nav>
         </Navbar.Collapse>
@@ -44,5 +68,16 @@ const NavbarComponent = () => {
     </Navbar>
   );
 };
+
+const mapStateToProps = (state, ownProps) => ({
+  loggedIn: getLoginStatus(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(loginRequest()),
+  logout: () => dispatch(logoutSuccess()),
+});
+
+const NavbarComponent = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export default NavbarComponent;

@@ -13,23 +13,39 @@ const createActionName = name => `app/${reducerName}/${name}`;
 /* action types */
 const LOGIN_START = createActionName('LOGIN_START');
 const LOGIN_SUCCESS = createActionName('LOGIN_SUCCESS');
+const LOGOUT_SUCCESS = createActionName('LOGOUT_SUCCESS');
 const LOGIN_ERROR = createActionName('LOGIN_ERROR');
 
 /* action creators */
 export const loginStarted = payload => ({ payload, type: LOGIN_START });
 export const loginSuccess = payload => ({ payload, type: LOGIN_SUCCESS });
 export const loginError = payload => ({ payload, type: LOGIN_ERROR });
+export const logoutSuccess = payload => ({ payload, type: LOGOUT_SUCCESS });
 
 /* thunk creators */
 export const loginRequest = () => async (dispatch, getState) => {
-  await Axios.get(`${BASE_URL}/auth/google`, {
+  const loggedIn = getState().user.loggedIn;
+  const { data } = await Axios.get(`${BASE_URL}/auth`, {
     withCredentials: true,
+    mode: 'cors',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true,
     },
+    body: { loggedIn },
   });
+  if (data.googleId) {
+    dispatch(
+      loginSuccess({
+        name: data.name,
+        email: data.email,
+        location: data.location,
+        role: 'user',
+        id: data._id,
+      })
+    );
+  }
 };
 
 /* reducer */
@@ -47,7 +63,22 @@ export const reducer = (statePart = [], action = {}) => {
     case LOGIN_SUCCESS: {
       return {
         ...statePart,
+        ...action.payload,
         loggedIn: true,
+        loading: {
+          active: false,
+          error: false,
+        },
+      };
+    }
+    case LOGOUT_SUCCESS: {
+      return {
+        loggedIn: false,
+        name: null,
+        email: null,
+        location: null,
+        role: null,
+        id: null,
         loading: {
           active: false,
           error: false,

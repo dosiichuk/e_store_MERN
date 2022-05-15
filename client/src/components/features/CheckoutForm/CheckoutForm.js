@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
 import { createOrderRequest } from '../../../redux/orderRedux';
-
-import styles from './CheckoutForm.module.scss';
 import { clearCart, getCartProducts } from '../../../redux/cartRedux';
 import { getUserData } from '../../../redux/authRedux';
 
+import styles from './CheckoutForm.module.scss';
+
 const Component = ({ className, createOrder, cartProducts, userId, clearCart }) => {
-  const [email, setEmail] = useState('');
+  const storedEmail = useSelector(getUserData).email;
+  const [email, setEmail] = useState(storedEmail || '');
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [userNotes, setUserNotes] = useState('');
@@ -34,6 +35,7 @@ const Component = ({ className, createOrder, cartProducts, userId, clearCart }) 
     setUserNotes('');
     clearCart([]);
   };
+
   return (
     <div className={clsx(className, styles.root)}>
       <Form onSubmit={submitHanler}>

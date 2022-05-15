@@ -23,12 +23,12 @@ export const initialState = {
     },
   },
   user: {
-    loggedIn: true,
-    name: 'John Doe',
-    email: 'test@test.com',
-    location: 'Warsaw',
+    loggedIn: false,
+    name: null,
+    email: null,
+    location: null,
     role: undefined,
-    id: '625dd54c1ed2a75524bb1e77',
+    id: null,
     loading: {
       active: true,
       error: false,

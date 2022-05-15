@@ -14,6 +14,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
+    console.log(req.user);
     res.redirect('/');
   }
 );
