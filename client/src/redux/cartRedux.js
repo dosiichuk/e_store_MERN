@@ -16,6 +16,7 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const ADD_TO_CART = createActionName('ADD_TO_CART');
 const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 const CHANGE_PRODUCT_QUANTITY = createActionName('CHANGE_PRODUCT_QUANTITY');
+const ADD_NOTE_TO_ITEM = createActionName('ADD_NOTE_TO_ITEM');
 const CLEAR_CART = createActionName('CLEAR_CART');
 
 /* action creators */
@@ -26,6 +27,7 @@ export const changeProductQuantity = payload => ({
   payload,
   type: CHANGE_PRODUCT_QUANTITY,
 });
+export const addNoteToItem = payload => ({ payload, type: ADD_NOTE_TO_ITEM });
 export const clearCart = payload => ({ payload, type: CLEAR_CART });
 
 /* thunk creators */
@@ -63,6 +65,16 @@ export const reducer = (statePart = [], action = {}) => {
         products: statePart.products.map(product =>
           product._id === action.payload._id
             ? { ...product, quantity: product.quantity + action.payload.changeBy }
+            : product
+        ),
+      };
+    }
+    case ADD_NOTE_TO_ITEM: {
+      return {
+        ...statePart,
+        products: statePart.products.map(product =>
+          product._id === action.payload._id
+            ? { ...product, userNote: action.payload.userNote }
             : product
         ),
       };
